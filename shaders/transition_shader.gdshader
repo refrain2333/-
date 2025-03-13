@@ -2,7 +2,59 @@ shader_type canvas_item;
 
 uniform float progress : hint_range(0.0, 1.0) = 0.0;
 uniform int effect_type : hint_range(0, 4) = 0; // 效果类型：0=柔和渐变，1=旋转渐隐，2=菱形扩展，3=水波纹，4=棱镜
+uniform int transition_theme : hint_range(0, 9) = 0;    // 主题选择：0=深海蓝，1=酒红，2=森林绿，3=暮光紫，4=焦糖棕，5=青碧，6=梦幻紫，7=古铜，8=星空蓝，9=玫瑰红
 uniform vec4 transition_color : source_color = vec4(0.05, 0.05, 0.08, 1.0); // 转场颜色
+
+// 预设的转场颜色主题
+vec4 get_theme_color(int theme_id) {
+    switch(theme_id) {
+        case 0: return vec4(0.07, 0.13, 0.17, 1.0);    // 深海蓝 Deep Ocean
+        case 1: return vec4(0.18, 0.06, 0.12, 1.0);    // 酒红 Wine Red
+        case 2: return vec4(0.08, 0.12, 0.05, 1.0);    // 森林绿 Forest Green
+        case 3: return vec4(0.15, 0.10, 0.20, 1.0);    // 暮光紫 Twilight Purple
+        case 4: return vec4(0.20, 0.15, 0.10, 1.0);    // 焦糖棕 Caramel Brown
+        case 5: return vec4(0.05, 0.15, 0.15, 1.0);    // 青碧 Cyan
+        case 6: return vec4(0.12, 0.08, 0.15, 1.0);    // 梦幻紫 Dream Purple
+        case 7: return vec4(0.16, 0.12, 0.08, 1.0);    // 古铜 Antique Bronze
+        case 8: return vec4(0.08, 0.10, 0.14, 1.0);    // 星空蓝 Starry Blue
+        case 9: return vec4(0.14, 0.07, 0.07, 1.0);    // 玫瑰红 Rose Red
+    }
+    return transition_color;
+}
+
+// 获取主题的辅助色
+vec4 get_accent_color(int theme_id) {
+    switch(theme_id) {
+        case 0: return vec4(0.2, 0.4, 0.5, 1.0);      // 深海蓝辅助色
+        case 1: return vec4(0.5, 0.2, 0.3, 1.0);      // 酒红辅助色
+        case 2: return vec4(0.3, 0.4, 0.2, 1.0);      // 森林绿辅助色
+        case 3: return vec4(0.4, 0.3, 0.5, 1.0);      // 暮光紫辅助色
+        case 4: return vec4(0.5, 0.4, 0.3, 1.0);      // 焦糖棕辅助色
+        case 5: return vec4(0.2, 0.5, 0.5, 1.0);      // 青碧辅助色
+        case 6: return vec4(0.3, 0.2, 0.4, 1.0);      // 梦幻紫辅助色
+        case 7: return vec4(0.4, 0.3, 0.2, 1.0);      // 古铜辅助色
+        case 8: return vec4(0.2, 0.3, 0.4, 1.0);      // 星空蓝辅助色
+        case 9: return vec4(0.4, 0.2, 0.2, 1.0);      // 玫瑰红辅助色
+    }
+    return vec4(0.3, 0.3, 0.3, 1.0);
+}
+
+// 获取主题的光效颜色
+vec4 get_glow_color(int theme_id) {
+    switch(theme_id) {
+        case 0: return vec4(0.3, 0.6, 0.8, 1.0);      // 深海蓝光效
+        case 1: return vec4(0.8, 0.3, 0.4, 1.0);      // 酒红光效
+        case 2: return vec4(0.4, 0.7, 0.3, 1.0);      // 森林绿光效
+        case 3: return vec4(0.6, 0.4, 0.8, 1.0);      // 暮光紫光效
+        case 4: return vec4(0.8, 0.6, 0.4, 1.0);      // 焦糖棕光效
+        case 5: return vec4(0.3, 0.8, 0.8, 1.0);      // 青碧光效
+        case 6: return vec4(0.5, 0.3, 0.7, 1.0);      // 梦幻紫光效
+        case 7: return vec4(0.7, 0.5, 0.3, 1.0);      // 古铜光效
+        case 8: return vec4(0.3, 0.4, 0.7, 1.0);      // 星空蓝光效
+        case 9: return vec4(0.7, 0.3, 0.3, 1.0);      // 玫瑰红光效
+    }
+    return vec4(0.5, 0.5, 0.5, 1.0);
+}
 
 // 辅助函数：生成随机值
 float random(vec2 uv) {
@@ -12,48 +64,53 @@ float random(vec2 uv) {
 void fragment() {
     vec2 uv = UV;
     float alpha = 0.0;
-    vec4 effect_color = vec4(transition_color.rgb, 1.0);
+    
+    // 使用固定主题色
+    vec4 main_color = get_theme_color(transition_theme);
+    vec4 accent = get_accent_color(transition_theme);
+    vec4 glow = get_glow_color(transition_theme);
+    vec4 effect_color = main_color;
     
     switch(effect_type) {
         case 0: // 丝滑圆形渐变
             vec2 center = vec2(0.5);
             float dist = length(uv - center);
             
-            // 添加渐进出现的效果
             float circle_size = mix(2.0, 0.3, smoothstep(0.0, 0.9, progress));
             float circle_edge = mix(0.0, 0.8, smoothstep(0.0, 0.9, progress));
             
-            // 计算基础圆形
             float circle = smoothstep(circle_size, circle_edge, dist);
-            
-            // 添加柔和的波纹
             float wave = sin(dist * 8.0 - progress * 2.0) * 0.02 * (1.0 - progress);
             circle += wave;
             
-            // 渐进的透明度控制
             float fade_in = smoothstep(0.0, 0.2, progress);
             alpha = circle * fade_in;
             
-            // 添加光晕效果
-            float glow = pow(1.0 - dist, 2.0) * 0.3 * (1.0 - progress);
-            effect_color += vec4(0.2, 0.2, 0.3, 0.0) * glow;
+            // 使用主题光效
+            float glow_effect = pow(1.0 - dist, 2.0) * 0.3 * (1.0 - progress);
+            effect_color = mix(main_color, glow, glow_effect);
             
-            // 确保边缘平滑
             alpha *= smoothstep(0.8, 0.4, dist);
             break;
             
-        case 1: // 旋转渐隐
+        case 1: // 旋转渐隐 - 添加主题色彩
             vec2 rotated_uv = uv - vec2(0.5);
             float angle = progress * 3.14159 * 0.5;
             vec2 final_uv = vec2(
                 rotated_uv.x * cos(angle) - rotated_uv.y * sin(angle),
                 rotated_uv.x * sin(angle) + rotated_uv.y * cos(angle)
             ) + vec2(0.5);
+            
             float fade = smoothstep(0.0, 1.0, progress);
-            alpha = smoothstep(0.0, 0.8, 1.0 - length(final_uv - vec2(0.5))) * fade;
+            float rot_dist = length(final_uv - vec2(0.5));
+            alpha = smoothstep(0.0, 0.8, 1.0 - rot_dist) * fade;
+            
+            // 添加旋转光效
+            effect_color = mix(main_color, accent, smoothstep(0.3, 0.7, rot_dist));
+            effect_color = mix(effect_color, glow, pow(1.0 - rot_dist, 3.0) * 0.5);
             break;
             
-        case 2: // 万花筒
+        case 2: // 万花筒 - 使用主题配色
             vec2 center = vec2(0.5);
             vec2 p = (uv - center) * 1.2; // 保持大图案
             
@@ -112,9 +169,21 @@ void fragment() {
             
             // 确保边缘平滑
             alpha = smoothstep(0.2, 0.8, alpha);
+            
+            // 使用主题配色
+            effect_color = mix(
+                main_color,
+                accent,
+                pattern * smoothstep(0.2, 0.8, progress)
+            );
+            effect_color = mix(
+                effect_color,
+                glow,
+                reflection * 0.3
+            );
             break;
             
-        case 3: // 丝滑溶解
+        case 3: // 丝滑溶解 - 使用主题配色
             vec2 center = vec2(0.5);
             vec2 noise_uv = uv * 1.2;
             
@@ -170,27 +239,24 @@ void fragment() {
             // 添加柔和光效
             float dynamic_glow = sin(progress * 3.14159 * 2.0 + dist_center * 4.0) * 0.5 + 0.5;
             
-            // 新的颜色混合逻辑
-            vec4 base_color = vec4(transition_color.rgb, 0.0); // 初始完全透明
-            vec4 edge_color = mix(
-                vec4(glow_color.rgb, edge * glow_intensity),
-                vec4(transition_color.rgb, edge * glow_intensity),
-                smoothstep(0.0, 0.3, progress)
+            // 修改颜色混合:
+            vec4 dissolve_color = mix(
+                main_color,
+                accent,
+                noise * smoothstep(0.2, 0.8, progress)
             );
-            
-            // 最终颜色混合
             effect_color = mix(
-                base_color,
-                edge_color,
-                edge * (1.0 + dynamic_glow * 0.2)
+                dissolve_color,
+                glow,
+                edge * glow_intensity
             );
             
             // 最终alpha计算 - 确保开始时完全透明
-            alpha = mix(0.0, alpha * transition_color.a, smoothstep(0.0, 0.1, progress));
+            alpha = mix(0.0, alpha * main_color.a, smoothstep(0.0, 0.1, progress));
             
             break;
             
-        case 4: // 扭曲漩涡效果
+        case 4: // 扭曲漩涡效果 - 使用主题配色
             vec2 center = vec2(0.5);
             vec2 toCenter = center - uv;
             float dist = length(toCenter);
@@ -222,10 +288,16 @@ void fragment() {
             );
             
             // 使用更温和的混合
+            vec4 twist_base = mix(
+                main_color,
+                accent,
+                smoothstep(0.3, 0.7, length(twisted_uv - center))
+            );
+            
             effect_color = mix(
-                vec4(transition_color.rgb, 1.0),
-                twist_color * vec4(0.8, 0.85, 0.9, 1.0), // 添加柔和的色调
-                smoothstep(0.3, 0.7, progress)
+                twist_base,
+                glow,
+                pow(1.0 - dist, 2.0) * progress * 0.5
             );
             
             // 控制透明度
@@ -242,7 +314,7 @@ void fragment() {
     
     // 添加柔和的光晕效果
     float vignette = 1.0 - length(uv - vec2(0.5)) * 0.3;
-    effect_color.rgb *= mix(1.0, vignette, 0.2);
+    effect_color.rgb = mix(effect_color.rgb, effect_color.rgb * vignette, 0.2);
     
-    COLOR = vec4(effect_color.rgb, alpha * transition_color.a);
+    COLOR = vec4(effect_color.rgb, alpha * main_color.a);
 }

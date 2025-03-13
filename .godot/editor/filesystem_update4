@@ -1,3 +1,4 @@
 res://addons/transition.tscn
 res://shaders/transition_shader.gdshader
 res://scenes/scene_1.tscn
+res://SceneManager.gd
