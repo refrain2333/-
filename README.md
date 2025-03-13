@@ -25,12 +25,12 @@
 ## 核心组件关系图
 ```mermaid
 graph TD
-    A[SceneManager] -->|实例化| B[Transition场景]
-    B -->|使用| C[TransitionShader]
-    D[场景1] -->|调用| A
-    E[场景2] -->|调用| A
-    F[场景3] -->|调用| A
-    G[BaseScene] -->|继承| D & E & F
+	A[SceneManager] -->|实例化| B[Transition场景]
+	B -->|使用| C[TransitionShader]
+	D[场景1] -->|调用| A
+	E[场景2] -->|调用| A
+	F[场景3] -->|调用| A
+	G[BaseScene] -->|继承| D & E & F
 ```
 
 ## 函数调用流程
@@ -39,47 +39,47 @@ graph TD
 ```gdscript
 # 自动加载的单例，负责场景切换
 func change_scene(target: String, pattern: String = "") -> void:
-    # 1. 创建转场实例
-    # 2. 添加到场景树
-    # 3. 执行转场动画
+	# 1. 创建转场实例
+	# 2. 添加到场景树
+	# 3. 执行转场动画
 ```
 
 ### 2. 转场效果 (transition.gd)
 ```gdscript
 # 转场效果实现
 func play_transition(target: String) -> void:
-    # 1. 设置着色器参数
-    # 2. 播放动画
-    # 3. 切换场景
-    # 4. 清理资源
+	# 1. 设置着色器参数
+	# 2. 播放动画
+	# 3. 切换场景
+	# 4. 清理资源
 ```
 
 ### 3. 基础场景 (base_scene.gd)
 ```gdscript
 # 所有场景的基类
 func change_to_scene(scene_path: String) -> void:
-    # 调用场景管理器进行切换
-    SceneManager.change_scene(scene_path)
+	# 调用场景管理器进行切换
+	SceneManager.change_scene(scene_path)
 ```
 
 ## 函数调用时序图
 ```mermaid
 sequenceDiagram
-    participant User
-    participant CurrentScene
-    participant SceneManager
-    participant Transition
-    participant NewScene
+	participant User
+	participant CurrentScene
+	participant SceneManager
+	participant Transition
+	participant NewScene
 
-    User->>CurrentScene: 触发场景切换
-    CurrentScene->>SceneManager: change_scene(target)
-    SceneManager->>Transition: 创建实例
-    Transition->>Transition: 初始化着色器
-    Transition->>Transition: play_transition()
-    Transition->>CurrentScene: 淡出动画
-    Transition->>NewScene: 加载新场景
-    Transition->>NewScene: 淡入动画
-    Transition->>Transition: 清理资源
+	User->>CurrentScene: 触发场景切换
+	CurrentScene->>SceneManager: change_scene(target)
+	SceneManager->>Transition: 创建实例
+	Transition->>Transition: 初始化着色器
+	Transition->>Transition: play_transition()
+	Transition->>CurrentScene: 淡出动画
+	Transition->>NewScene: 加载新场景
+	Transition->>NewScene: 淡入动画
+	Transition->>Transition: 清理资源
 ```
 
 ## 使用示例
@@ -89,7 +89,7 @@ sequenceDiagram
 extends BaseScene
 
 func _on_button_pressed():
-    change_to_scene("res://scenes/scene_2.tscn")
+	change_to_scene("res://scenes/scene_2.tscn")
 ```
 
 ### 2. 自定义转场效果

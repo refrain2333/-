@@ -1,0 +1,8 @@
+res://addons/transition.gd
+res://scenes/base_scene.gd
+res://shaders/transition_shader.gdshader
+res://s.gd
+res://README.md
+res://SceneManager.gd
+res://addons/transition.tscn
+res://scenes/scene_1.tscn
