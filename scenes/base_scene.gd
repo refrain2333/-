@@ -26,7 +26,7 @@ func get_current_scene_index() -> int:
 # 用于切换场景并应用指定的过渡效果
 func change_scene_with_effect(target_scene: String, _effect: int):
 	var _color_scheme = color_schemes.pick_random()
-	var _transition = await SceneManager.change_scene(target_scene, "",0)
+	var _transition = await SceneManager.change_scene(target_scene, "",4)
 	#if transition:
 		#transition\
 			#.set_effect(effect)\
