@@ -26,8 +26,7 @@ func get_current_scene_index() -> int:
 # 用于切换场景并应用指定的过渡效果
 func change_scene_with_effect(target_scene: String, _effect: int):
 	var _color_scheme = color_schemes.pick_random()
-	var scene_manager = get_node("/root/SceneManager")
-	var _transition = await scene_manager.change_scene(target_scene, "")
+	var _transition = await SceneManager.change_scene(target_scene, "",0)
 	#if transition:
 		#transition\
 			#.set_effect(effect)\
@@ -45,6 +44,7 @@ func _on_next_button_pressed() -> void:
 	var target_index = (current_index + 1) % SCENES.size()
 	print("目标场景索引: ", target_index)
 	await change_scene_with_effect(SCENES[target_index], TransitionEffect.RADIAL_GLOW)
+	
 
 
 func _on_prev_button_pressed() -> void:
@@ -52,4 +52,4 @@ func _on_prev_button_pressed() -> void:
 	var current_index = get_current_scene_index()
 	var target_index = (current_index - 1 + SCENES.size()) % SCENES.size()
 	print("目标场景索引: ", target_index)
-	await change_scene_with_effect(SCENES[target_index], TransitionEffect.RADIAL_GLOW)
+	await SceneManager.change_scene(SCENES[target_index], "")#随机

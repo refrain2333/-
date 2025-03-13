@@ -6,6 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbiwb"]
 shader = ExtResource("1_cvi1x")
 shader_parameter/progress = 1.0
+shader_parameter/effect_type = 0
 
 [sub_resource type="Animation" id="Animation_8hqn8"]
 resource_name = "fade_in"
