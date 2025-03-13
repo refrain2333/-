@@ -2,3 +2,7 @@ res://addons/transition.tscn
 res://shaders/transition_shader.gdshader
 res://scenes/scene_1.tscn
 res://SceneManager.gd
+res://scenes/BaseScence.tscn
+res://scenes/base_scene.gd
+res://addons/transition.gd
+res://README.md

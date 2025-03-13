@@ -1,16 +1,37 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1741897995
+::res://::1741899699
 icon.svg::CompressedTexture2D/CompressedTexture2D::8636652425518628863::1741885156::1741885212::1::::<><><>0<>0<>4c596c705362c7ac3a74192a0778b871<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile/TextFile::-1::1741885274::0::1::::<><><>0<>0<><>::
-SceneManager.gd::GDScript/GDScript::1623873544282832209::1741889263::0::1::::<>Node<><>0<>0<><>::
-::res://addons/::1741897955
+SceneManager.gd::GDScript::1623873544282832209::1741899989::0::1::::<>Node<><>0<>0<><>::
+::res://addons/::1741899503
 transition.gd::GDScript::1750720261342207390::1741897911::0::1::::<>Node<><>0<>0<><>::
-transition.tscn::PackedScene::2228808832150268812::1741897955::0::1::::<><><>0<>0<><>::uid://b25yjmvuyjqbp::::res://shaders/transition_shader.gdshader<>uid://y7cdvuohjvco::::res://addons/transition.gd
-::res://scenes/::1741897955
+transition.tscn::PackedScene::2228808832150268812::1741899503::0::1::::<><><>0<>0<><>::uid://b25yjmvuyjqbp::::res://shaders/transition_shader.gdshader<>uid://y7cdvuohjvco::::res://addons/transition.gd
+::res://scenes/::1741899503
 BaseScence.tscn::PackedScene/PackedScene::2835347831480975834::1741885156::0::1::::<><><>0<>0<><>::uid://c3yv1fsys4epq::::res://scenes/base_scene.gd
 base_scene.gd::GDScript::6788995834377045926::1741897297::0::1::::<>Node<><>0<>0<><>::
-scene_1.tscn::PackedScene::3536500121349081703::1741897955::0::1::::<><><>0<>0<><>::uid://c3yv1fsys4epq::::res://scenes/base_scene.gd
+scene_1.tscn::PackedScene::3536500121349081703::1741899503::0::1::::<><><>0<>0<><>::uid://c3yv1fsys4epq::::res://scenes/base_scene.gd
 scene_2.tscn::PackedScene/PackedScene::9160310226931354048::1741885156::0::1::::<><><>0<>0<><>::uid://c3yv1fsys4epq::::res://scenes/base_scene.gd
 scene_3.tscn::PackedScene/PackedScene::219175132786587022::1741885156::0::1::::<><><>0<>0<><>::uid://c3yv1fsys4epq::::res://scenes/base_scene.gd
-::res://shaders/::1741897968
-transition_shader.gdshader::Shader::4344924738175555193::1741897968::0::1::::<><><>0<>0<><>::
+::res://shaders/::1741899503
+transition_shader.gdshader::Shader::4344924738175555193::1741899959::0::1::::<><><>0<>0<><>::
+::res://转场图/::1741899811
+cg (1).jpg::CompressedTexture2D::1869380294819907667::1709446601::1741900034::1::::<><><>0<>0<>72367c1f6092492338b482c4e7e0eef5<>res://.godot/imported/cg (1).jpg-997a4ed848b39203b8d94d7c45356d85.ctex::
+cg (1).png::CompressedTexture2D::5550709527088262672::1726685643::1741900037::1::::<><><>0<>0<>4733fc264534d20a08a0c1597564f4a0<>res://.godot/imported/cg (1).png-ce49669f037e809dfd8ffaaaa867eb9c.ctex::
+cg (2).jpg::CompressedTexture2D::3971389720551790012::1709446601::1741900034::1::::<><><>0<>0<>8f215218a05ff0595e038e283b50af0f<>res://.godot/imported/cg (2).jpg-715754790df920be03d6e9f1f0355619.ctex::
+cg (2).png::CompressedTexture2D::22337743009815437::1726685622::1741900037::1::::<><><>0<>0<>b68318c426c44aa1867c7c4d4000fe75<>res://.godot/imported/cg (2).png-9b03e3e4879eb2e8178d27861f1f7dd2.ctex::
+cg (3).jpg::CompressedTexture2D::5622959442973287997::1709446601::1741900034::1::::<><><>0<>0<>da0f305710cf6451d6fe9015a53cf8d1<>res://.godot/imported/cg (3).jpg-24b03c4313052298adda82ec446abe8f.ctex::
+cg (3).png::CompressedTexture2D::878935554004405567::1726685658::1741900036::1::::<><><>0<>0<>69444cce36c064ef001f562ef8a9784a<>res://.godot/imported/cg (3).png-6d3e725ea648500b7f9ecf1950b07ea0.ctex::
+cg (4).jpg::CompressedTexture2D::797423627088310405::1709446601::1741900034::1::::<><><>0<>0<>8d46a69de1c5cc7a568a33101e496ed5<>res://.godot/imported/cg (4).jpg-5bd67db4ab2d327ffae3c07746125845.ctex::
+cg (5).jpg::CompressedTexture2D::2283479836664279498::1709446601::1741900034::1::::<><><>0<>0<>64c705539fb41f48e25bbd44fbba37a4<>res://.godot/imported/cg (5).jpg-6a9de329da788182a33a9532a063689b.ctex::
+cg (6).jpg::CompressedTexture2D::5769346999108414189::1709446601::1741900033::1::::<><><>0<>0<>dec8f86ef8357e26e6f4ccf87688d752<>res://.godot/imported/cg (6).jpg-763ebf1bd89918c4ce1d769470b3ece4.ctex::
+cg (7).jpg::CompressedTexture2D::5088366846110555027::1709446601::1741900033::1::::<><><>0<>0<>e9d90700d075524c08cbdf9186011099<>res://.godot/imported/cg (7).jpg-6d73d2cb82b771ff681880fd3643124c.ctex::
+cg (8).jpg::CompressedTexture2D::1355213933134050686::1709446601::1741900033::1::::<><><>0<>0<>e8c6f60d8ae6c5b1c60e35fd0d20f5ee<>res://.godot/imported/cg (8).jpg-65ed8a6bec505e957b802880b38c378d.ctex::
+cg (9).jpg::CompressedTexture2D::2711665244714476756::1709446601::1741900033::1::::<><><>0<>0<>9c16accc5a877c1905328681abe7830a<>res://.godot/imported/cg (9).jpg-9cb966611452b2be0c68b8202f7505b3.ctex::
+cg (10).jpg::CompressedTexture2D::6721053320897981154::1709446601::1741900033::1::::<><><>0<>0<>908c6ab7bd232ea865dc9db45af0c8f1<>res://.godot/imported/cg (10).jpg-bb6974d08fa8f98d923fedc5ed0ae693.ctex::
+cg (11).jpg::CompressedTexture2D::5414256773577278890::1709446601::1741900033::1::::<><><>0<>0<>79c78c49ee5ddd2ac03a245f597f59bf<>res://.godot/imported/cg (11).jpg-7f5ac1e30cd38b084e9991378281aa6b.ctex::
+cg (12).jpg::CompressedTexture2D::1706904976955448487::1709446601::1741900033::1::::<><><>0<>0<>f7dc4a2727155fbc8615704abde3031f<>res://.godot/imported/cg (12).jpg-e79058fcc466402c5c5a44163d8a9c63.ctex::
+cg (13).jpg::CompressedTexture2D::8624545951969308810::1709446601::1741900033::1::::<><><>0<>0<>e88d3e7dab21452557ba049792464ef8<>res://.godot/imported/cg (13).jpg-0e02d7a137021024fd0cad7d3ee0ad73.ctex::
+cg (14).jpg::CompressedTexture2D::2937300981127838314::1704900822::1741900032::1::::<><><>0<>0<>0a731ed53ca794fd9e70468c2669caad<>res://.godot/imported/cg (14).jpg-92363b16876411a2a6d9d06bb22c992e.ctex::
+cg (15).jpg::CompressedTexture2D::756126228991690741::1704900542::1741900034::1::::<><><>0<>0<>bc8a2b4314d9414f5890469541a19a58<>res://.godot/imported/cg (15).jpg-c588cb53d5d78a4d37a6bacbe7e90ab4.ctex::
+cg (16).jpg::CompressedTexture2D::3491777060044327799::1709446601::1741900033::1::::<><><>0<>0<>0cf89151d803ebd03412fa72ade2229e<>res://.godot/imported/cg (16).jpg-0b4450f1445ca583c598b68cea992cb3.ctex::
+cg (17).jpg::CompressedTexture2D::9100304875700769632::1709446601::1741900033::1::::<><><>0<>0<>b7438936876385beaf57437a16f84a61<>res://.godot/imported/cg (17).jpg-6af94a7edca578d203b49c42460b2f3d.ctex::

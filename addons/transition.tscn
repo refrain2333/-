@@ -6,9 +6,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbiwb"]
 shader = ExtResource("1_cvi1x")
 shader_parameter/progress = 1.0
-shader_parameter/effect_type = 0
-shader_parameter/transition_theme = 0
-shader_parameter/transition_color = Color(0.05, 0.05, 0.08, 1)
 
 [sub_resource type="Animation" id="Animation_6xgns"]
 length = 0.001
